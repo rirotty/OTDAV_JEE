@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/pages/admin/index.xhtml">
+	<ui:define name="add">
+		<h1 class="text-primary">Membership requests</h1>
+
+		<br />
+		<br />
+
+		<h:dataTable value="#{membershipBean.memberships}" var="membership"
+			border="1" class="table table-striped">
+
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="User First Name" />
+				</f:facet>
+				<h:outputText value="#{membership.user.name}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="User Last Name" />
+				</f:facet>
+				<h:outputText value="#{membership.user.lastName}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="Category" />
+				</f:facet>
+				<h:outputText value="#{membership.subCategory.subcategoryName}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header" scope="col">
+					<h:outputText value="Start Date" />
+				</f:facet>
+				<h:outputText value="#{membership.startDate}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="Expiration Date" />
+				</f:facet>
+				<h:outputText value="#{membership.expirationDate}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="Status" />
+				</f:facet>
+				<h:outputText value="#{membership.status}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="Rejected For" />
+				</f:facet>
+				<h:outputText value="#{membership.rejectedFor}" />
+			</h:column>
+			<h:column scope="col">
+				<f:facet name="header">
+					<h:outputText value="Action" />
+				</f:facet>
+
+
+				<h:form id="form">
+					<h:commandButton id="btnn"
+						action="#{membershipBean.delete(membership.id)}" value="Delete" class="btn btn-primary"/>
+					<h:commandButton action="#{membershipBean.update(membership)}"
+						value="Update" rendered="#{membership.status != 'Rejected'}" class="btn btn-primary" />
+				</h:form>
+
+
+			</h:column>
+		</h:dataTable>
+
+
+		<h:form>
+
+			<h1 class="text-primary">Update a membership status</h1>
+
+			<br />
+
+			<h:outputText value="Status" />
+			<div class="form-group">
+				<h:inputText value="#{membershipBean.status}" class="form-control"
+					placeholder="Staus" />
+			</div>
+
+			<h:outputText value="Rejected for" />
+			<div class="form-group">
+				<h:inputText value="#{membershipBean.rejectedFor}"
+					class="form-control" placeholder="Rejected for" />
+			</div>
+
+
+			<div class="form-group mt-30">
+				<h:commandButton action="#{membershipBean.up()}"
+					value="Update membership status" class="btn btn-primary"/>
+			</div>
+
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	
+	
+	
+
+	<table>
+	<h:form id="form">
+	
+<tr>
+	<td>
+		<h:outputText value="Category" />
+	</td>
+	<td>
+		<h:selectOneMenu value="#{subcategoryBean.selectedCategoryId}">
+		<f:selectItems value="#{subcategoryBean.categories}" var="category"
+		 itemValue="#{category.id}" itemLabel="#{category.categoryName}" />
+			</h:selectOneMenu>
+	</td>
+</tr>
+<tr>
+	<td>
+	<h:outputText value="subCategory name" />
+	</td>
+	<td>
+		<h:inputText  value="#{subcategoryBean.subcategoryName}" >
+		</h:inputText>
+	</td>
+</tr>
+<tr>
+	<td>
+		<h:outputText value="point" />
+	</td>
+	<td>
+		<h:inputText id="pt" value="#{subcategoryBean.point}" required="true" requiredMessage="Le contrat doit spécifier le salaire" validatorMessage="le salaire doit etre compris entre 350 et 3500"  >
+		<f:validateDoubleRange minimum="350" maximum="3500" />
+		</h:inputText>
+
+	</td>
+</tr>
+<tr>
+	<td>
+		<h:outputText value="Actif/InActif" />
+	</td>
+	<td>
+<h:selectBooleanCheckbox value="#{subcategoryBean.isActif}"/>
+	</td>
+</tr>
+<tr>
+<td>
+
+<h:commandButton id="btn" action="#{subcategoryBean.addsubcategory()}" value="Add subCategory" />
+<h:commandButton  action="#{subcategoryBean.mettreAjr()}" value="update subCategory" />
+
+<br />
+<h:message for="pt" style="color:red"/>
+</td>
+</tr>
+</h:form>
+
+</table>
+
+
+</html>

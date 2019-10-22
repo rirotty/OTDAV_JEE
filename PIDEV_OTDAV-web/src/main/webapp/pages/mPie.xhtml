@@ -1,0 +1,33 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" template="/pages/admin/index.xhtml">
+	<ui:define name="add">
+		<h1 class="text-primary">Membership Statuses</h1>
+
+		<br />
+		<br />
+		
+
+<h:form>
+    <p:growl id="growl" showDetail="true" />
+ 
+    <h:panelGrid columns="2" columnClasses="left,right" style="width:100%">
+        <p:chart type="pie" model="#{MembershipPieBean.pieModel1}" style="width:400px;height:300px">
+            <p:ajax event="itemSelect" listener="#{MembershipPieBean.itemSelect}" update="growl" />
+        </p:chart>
+ 
+        <p:chart type="bar" model="#{MembershipPieBean.barModel}" style="width:400px;height:300px">
+            <p:ajax event="itemSelect" listener="#{MembershipPieBean.itemSelect}" update="growl" />
+        </p:chart>  
+    </h:panelGrid>
+ 
+</h:form>
+
+
+
+		
+			</ui:define>
+
+</ui:composition>

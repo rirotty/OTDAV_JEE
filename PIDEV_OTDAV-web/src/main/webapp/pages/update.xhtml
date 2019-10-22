@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/default/main.xhtml">
+	<ui:define name="title">Category</ui:define>
+	<ui:define name="content">
+
+<html>
+<body>
+<h:form id="form">
+<h:panelGrid columns="2">
+<h:outputText value="Nom category"/>
+<h:inputText value="#{categoryBean.categoryName}"/>
+
+<h:outputText value="icon"/>
+<h:inputText value="#{categoryBean.icon}"/>
+
+<h:outputText value="Actif/InActif"/>
+<h:selectBooleanCheckbox value="#{categoryBean.isActif}"/>
+
+<h:outputText value="point" />
+<h:inputText value="#{categoryBean.point}"/>
+
+
+<h:commandButton action="#{categoryBean.mettreAjr()}" value="mettre a jour" />
+<br />
+<h:message for="btn" />
+
+
+</h:panelGrid>
+
+
+
+
+</h:form>
+</body>
+</html>
+</ui:define></ui:composition>

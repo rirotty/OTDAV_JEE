@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      
+	<h:head>
+		
+		
+		<ui:include src="/template/header.xhtml" />
+	</h:head>
+
+	<body>  
+		<section id="intro" class="section-intro">
+			<div class="logo-menu">
+	            <div class="search-container">
+			        <div class="container text-center">
+			          <div class="row">
+			            <div class="col-md-12">
+			              <h1 style="line-height: 60px;">Welcome To EasyMission </h1><h2>Work Easy,Search In Easy Mission</h2>
+			            </div>
+			           </div>
+			        </div>
+				</div>
+	     	</div>
+		</section>     
+	  
+		<section class="find-job section">
+			<div class="container">
+				<ui:insert name="content"></ui:insert>
+			</div>
+		</section>
+
+	</body>
+  
+	<footer> 
+		<ui:insert name="footer"><ui:include src="/template/footer.xhtml"/></ui:insert>
+	</footer>
+ 	<ui:insert name="javascriptBlock"></ui:insert>
+</html>

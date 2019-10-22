@@ -1,0 +1,33 @@
+<html  xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<body>
+<h:form id="form">
+<h:panelGrid columns="2">
+<h:outputText value="Nom category"/>
+<h:inputText value="#{categoryBean.categoryName}"/>
+
+<h:outputText value="icon"/>
+<h:inputText value="#{categoryBean.icon}"/>
+
+<h:outputText value="Actif/InActif"/>
+<h:selectBooleanCheckbox value="#{categoryBean.isActif}"/>
+
+
+<h:commandButton id="btn" action="#{categoryBean.addCategory()}" value="Ajouter category" />
+
+<br />
+<h:message for="btn" />
+
+
+</h:panelGrid>
+
+
+
+
+</h:form>
+</body>
+</html>

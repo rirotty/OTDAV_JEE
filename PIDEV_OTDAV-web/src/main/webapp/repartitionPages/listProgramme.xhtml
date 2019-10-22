@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/index.xhtml">
+ 	<ui:define name="title">programmes</ui:define>
+ 	<ui:define name="content">
+
+		<h:link outcome="ajoutProgramme" value="Ajouter"></h:link>
+		<h:dataTable value="#{programmeBean.listProgrammesByUser}" var="programme" border="1">
+	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="date" />
+				</f:facet>
+				<h:outputText value="#{programme.date}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="montant" />
+				</f:facet>
+				<h:outputText value="#{programme.montant}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Action" />
+				</f:facet>
+				<h:form id="form">
+					<h:commandButton rendered="#{!programme.validate}" class="managementBtn" id="btnn" action="#{programmeBean.supprimer(programme.id)}" value="supprimer" />
+					<h:commandButton  rendered="#{!programme.validate}"  class="managementBtn" action="#{programmeBean.modifierForm(programme)}" value="modifier" />
+					<h:commandButton   rendered="#{!programme.validate}" id="validateBtn" action="#{programmeBean.validate(programme)}" value="valider" />
+					<h:commandButton   rendered="#{programme.validate}" action="#{programmeBean.askForRechek(programme)}" value="corriger" />
+					<h:commandButton action="#{programmeBean.listExploitation(programme)}" value="exploitations" />
+				</h:form>
+				
+			</h:column>
+			
+		</h:dataTable>
+	
+	</ui:define>
+	
+</ui:composition>

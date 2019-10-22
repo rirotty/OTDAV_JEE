@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template = "/pages/admin/index.xhtml">
+
+	<ui:define name="add">
+
+		
+		<h:dataTable value="#{programmeBean.listProgrammes}" var="programme" border="1">
+	
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="date" />
+				</f:facet>
+				<h:outputText value="#{programme.date}" />
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="montant" />
+				</f:facet>
+				<h:outputText value="#{programme.montant}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Voisin" />
+				</f:facet>
+				<h:outputText value="#{programme.user.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Action" />
+				</f:facet>
+				<h:form id="form">
+					<h:commandButton disabled="#{!programme.validate}" class="managementBtn" id="btnn" action="#{programmeBean.calculerPoint(programme)}" value="Calculer point" />
+					<h:commandButton  disabled="#{!programme.validate}"  class="managementBtn" action="#{programmeBean.viewPoints(programme)}" value="View Points" />
+					<h:commandButton  disabled="#{!programme.cheked}"  class="managementBtn" action="#{programmeBean.acceptReRechek(programme)}" value="Retour chek" />
+					<h:commandButton action="#{programmeBean.listExploitationAdmin(programme)}" value="exploitations" />
+				</h:form>
+				
+			</h:column>
+			
+		</h:dataTable>
+	
+	</ui:define>
+    
+</ui:composition>

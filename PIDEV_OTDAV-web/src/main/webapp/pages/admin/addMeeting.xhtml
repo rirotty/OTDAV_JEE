@@ -1,0 +1,61 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template = "/pages/admin/index.xhtml">
+<ui:define name="add">
+
+
+<h:form id="form">
+
+	
+	<h1 class="text-primary"> Ajouter rendez vous</h1>
+
+    <h:outputText value="Nom" />
+    
+    <div class="form-group">  
+    <h:inputText value="#{meetingBean.nom}" class="form-control" placeholder="nom"  />
+    </div>
+    
+    <h:outputText value="Prenom"> </h:outputText>
+    <div class="form-group"> 
+    <h:inputSecret value="#{meetingBean.prenom}" class="form-control" placeholder="prenom"/>
+    </div>
+    
+    <h:outputText value="Email" />
+    <div class="form-group"> 
+    <h:inputText value="#{meetingBean.email}" class="form-control" placeholder="email"/>
+    </div>
+    
+    <h:outputText value="Date" />
+    <div class="form-group"> 
+      
+       <h:selectOneMenu value="#{meetingBean.selectedDispo}" class="custom-select">
+	   <f:selectItems value="#{meetingBean.disponibilites}" var="dispo" itemValue="#{dispo.id}" itemLabel="#{dispo.date} / #{dispo.heure} heure"/>
+       </h:selectOneMenu>
+    
+    </div>
+    
+
+    
+    
+
+ 
+    <br/>
+    <br/>
+
+    <div class="form-group mt-30">
+    <h:commandButton id="btn1" action="#{meetingBean.addMeeting()}" value ="Ajouter" class="btn btn-primary"></h:commandButton>
+    </div>
+    
+    
+    <h:message for="btn1"/>
+    
+
+    </h:form>
+    
+</ui:define>
+    
+</ui:composition>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+
+<h:form id="form">
+
+	<h1>List of employees</h1>
+	<h:dataTable value="#{employeBean.employes}" var="employe" border="1">
+	
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="Login" />
+		</f:facet>
+		<h:outputText value="#{employe.email}" />
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="First Name" />
+		</f:facet>
+		<h:outputText value="#{employe.prenom}" />
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="Last Name" />
+		</f:facet>
+		<h:outputText value="#{employe.nom}" />
+	</h:column>
+		
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="Role" />
+		</f:facet>
+		<h:outputText value="#{employe.role}" />
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="Actif" />
+		</f:facet>
+		<h:outputText value="#{employe.actif == true ? 'yes' : 'no' }" />
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">
+			<h:outputText value="Action" />
+		</f:facet>
+		<h:commandButton action="#{employeBean.deleteEmploye(employe.id)}" value="Delete"  /> 
+		<h:commandButton action="#{employeBean.modify(employe)}" value="Modify"  />
+	</h:column>
+	
+
+	
+	
+	</h:dataTable>
+	
+	<br/>
+	<br/>
+	
+	<h1> Add employee</h1>
+
+	
+    <h:panelGrid columns="2">
+    
+    <h:outputText value="login(email)" />
+    <h:inputText value="#{employeBean.email}" />
+    
+    <h:outputText value="password"> </h:outputText>
+    <h:inputSecret value="#{employeBean.password}" />
+    
+    <h:outputText value="First Name" />
+    <h:inputText value="#{employeBean.nom}" />
+    
+    <h:outputText value="Last Name" />
+    <h:inputText value="#{employeBean.prenom}" />
+    
+    <h:outputText value="Actif/inactif" />
+    <h:selectBooleanCheckbox value="#{employeBean.actif}" /> 
+    
+    <h:outputText value="Role" />
+    <h:selectOneMenu value="#{employeBean.role}">
+    	<f:selectItem itemLabel="Choose the role" itemValue=""/>
+    	<f:selectItems value="#{data.roles}"/>
+    </h:selectOneMenu>
+    
+    <h:commandButton id="btn1" action="#{employeBean.addEmploye()}" value ="Add Employee"></h:commandButton>
+    <h:commandButton id="btn2" action="#{employeBean.updateEmploye()}" value ="Update employee"></h:commandButton>
+    
+    
+    
+    <h:message for="btn1"/>
+    
+    </h:panelGrid>
+    </h:form>
+    
+</body>
+</html>

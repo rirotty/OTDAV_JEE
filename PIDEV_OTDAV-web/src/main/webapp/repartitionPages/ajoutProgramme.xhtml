@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/template/index.xhtml">
+ 	<ui:define name="title">programmes</ui:define>
+ 	<ui:define name="content">
+		<h:form id="form">
+			<h:panelGrid columns="2">
+			
+				<h:outputText value="Date"/>
+				<h:inputText value="#{programmeBean.date}">
+					<f:convertDateTime pattern="dd-MM-yyyy"/>
+				</h:inputText>
+				
+				<h:outputText value="Montant"/>
+				<h:inputText value="#{programmeBean.montant}"/>
+				
+				<h:commandButton id="btn" action="#{programmeBean.ajouter()}" value="Ajouter" />
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
